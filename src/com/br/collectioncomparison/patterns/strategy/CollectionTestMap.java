@@ -1,6 +1,7 @@
 package com.br.collectioncomparison.patterns.strategy;
 
 import java.util.Map;
+import java.util.Set;
 
 import com.br.collectioncomparison.model.entities.ArrayListTestADD;
 import com.br.collectioncomparison.model.interfaces.CollectionTest;
@@ -15,6 +16,10 @@ public class CollectionTestMap {
 
 	public static CollectionTest getCollectionTest(String title) {
 		return map.get(title);
+	}
+	
+	public static Set<String> getTitles() {
+		return map.keySet();
 	}
 
 }
