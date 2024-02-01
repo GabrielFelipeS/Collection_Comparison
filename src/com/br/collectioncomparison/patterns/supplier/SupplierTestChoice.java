@@ -2,21 +2,18 @@ package com.br.collectioncomparison.patterns.supplier;
 
 import java.util.function.Supplier;
 
-import com.br.collectioncomparison.model.enums.CollectionTestEnum;
-import com.br.collectioncomparison.model.enums.DataFile;
+import com.br.collectioncomparison.model.entities.ArrayListTestADD;
+import com.br.collectioncomparison.model.entities.TestObject;
 
-public class SupplierTitleTest implements Supplier<String[]>{
+public class SupplierTestChoice implements Supplier<TestObject[]>  {
 
-	@Override
-	public String[] get() {
-		CollectionTestEnum[] collectionTestEnums = CollectionTestEnum.values();
-		String[] titles = new String[collectionTestEnums.length];
-		
-		for(int i = 0;i < collectionTestEnums.length; i++) {
-			titles[i] = collectionTestEnums[i].getTitleTest();
-		}
-	
-		return titles;
-	}
+    private static final TestObject[] titles = new TestObject[]{
+            new TestObject("Elemento 1", new ArrayListTestADD()),
+            new TestObject("Elemento 2", new ArrayListTestADD())
+    };
 
+    @Override
+    public TestObject[] get() {
+        return titles;
+    }
 }

@@ -42,5 +42,4 @@ public class ComparableView extends JFrame {
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
-	//- fileNames: JComboBox
 }
