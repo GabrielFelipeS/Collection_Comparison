@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	private Integer id;
 	private String name;
@@ -42,6 +42,11 @@ public class Employee {
 			return false;
 		Employee other = (Employee) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public int compareTo(Employee e) {
+		return this.id - e.id;
 	}
 
 }

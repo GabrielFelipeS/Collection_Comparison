@@ -2,7 +2,7 @@ package com.br.collectioncomparison.application;
 
 import javax.swing.JOptionPane;
 
-import com.br.collectioncomparison.model.entities.TestObject;
+import com.br.collectioncomparison.model.domain.TestObject;
 import com.br.collectioncomparison.patterns.supplier.SupplierTestChoice;
 
 public class TestSuppliers {
