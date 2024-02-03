@@ -47,11 +47,11 @@ public class ComparableView extends JFrame {
 		container.add(scrollPane);
 
 		addFiles(fileNames);
-		fileNames.setBounds(20, 20, 250, 20);
+		fileNames.setBounds(20, 20, 300, 20);
 		container.add(fileNames);
 
 		addChoideActions(choiceOfActions);
-		choiceOfActions.setBounds(20, 60, 250, 20);
+		choiceOfActions.setBounds(20, 60, 300, 20);
 		container.add(choiceOfActions);
 
 		JButton jbClear = new JButton("Limpar tabela");
