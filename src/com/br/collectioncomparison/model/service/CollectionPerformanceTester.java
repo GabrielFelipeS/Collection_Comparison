@@ -5,7 +5,7 @@ import com.br.collectioncomparison.model.interfaces.CollectionTest;
 
 // TODO validar se precisa dessa classe
 public class CollectionPerformanceTester {
-	private int numberOfExecutions = 10;
+	private int numberOfExecutions;
 	
 	public CollectionPerformanceTester(int numberOfExecutions) {
 		this.numberOfExecutions = numberOfExecutions;
