@@ -19,8 +19,8 @@ import javax.swing.table.DefaultTableModel;
 
 import com.br.collectioncomparison.controller.ComparableController;
 import com.br.collectioncomparison.controller.PerformanceTesterController;
+import com.br.collectioncomparison.model.domain.DataFile;
 import com.br.collectioncomparison.model.domain.TestObject;
-import com.br.collectioncomparison.model.enums.DataFile;
 import com.br.collectioncomparison.patterns.supplier.SupplierDataFiles;
 import com.br.collectioncomparison.patterns.supplier.SupplierTestChoice;
 

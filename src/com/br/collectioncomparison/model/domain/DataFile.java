@@ -1,4 +1,4 @@
-package com.br.collectioncomparison.model.enums;
+package com.br.collectioncomparison.model.domain;
 
 public class DataFile {
 	private String title;

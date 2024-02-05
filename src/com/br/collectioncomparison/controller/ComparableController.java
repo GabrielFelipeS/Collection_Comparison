@@ -2,9 +2,9 @@ package com.br.collectioncomparison.controller;
 
 import javax.swing.table.DefaultTableModel;
 
+import com.br.collectioncomparison.model.domain.DataFile;
 import com.br.collectioncomparison.model.domain.PerformaceResults;
 import com.br.collectioncomparison.model.domain.TestObject;
-import com.br.collectioncomparison.model.enums.DataFile;
 
 public class ComparableController {
 	private DefaultTableModel tableContent;

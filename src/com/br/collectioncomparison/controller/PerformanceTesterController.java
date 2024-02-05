@@ -2,10 +2,10 @@ package com.br.collectioncomparison.controller;
 
 import java.time.LocalDateTime;
 
+import com.br.collectioncomparison.model.domain.DataFile;
 import com.br.collectioncomparison.model.domain.Employee;
 import com.br.collectioncomparison.model.domain.PerformaceResults;
 import com.br.collectioncomparison.model.domain.TestObject;
-import com.br.collectioncomparison.model.enums.DataFile;
 import com.br.collectioncomparison.model.service.EmployeeFileReader;
 
 public class PerformanceTesterController {
