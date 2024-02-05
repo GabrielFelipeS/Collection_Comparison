@@ -1,26 +1,22 @@
-package com.br.collectioncomparison.model;
+package com.br.collectioncomparison.model.entities;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
 
 import com.br.collectioncomparison.model.domain.Employee;
 import com.br.collectioncomparison.model.interfaces.CollectionTest;
 
-public class HashSetTestADD implements CollectionTest {
+public class LinkedListAddTestADD implements CollectionTest {
 
 	@Override
 	public long test(Employee[] employees) {
-		Set<Employee> list = new HashSet<>();
+		LinkedList<Employee> list = new LinkedList<>();
 
 		long start = getMilliseconds();
-
-		for (Employee e : employees) {
+		for(Employee e: employees) {
 			list.add(e);
 		}
-		
 		long end = getMilliseconds();
-
+		
 		return end - start;
 	}
 

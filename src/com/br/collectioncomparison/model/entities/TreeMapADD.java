@@ -1,19 +1,22 @@
-package com.br.collectioncomparison.model;
+package com.br.collectioncomparison.model.entities;
 
-import java.util.LinkedList;
+import java.util.TreeMap;
 
 import com.br.collectioncomparison.model.domain.Employee;
 import com.br.collectioncomparison.model.interfaces.CollectionTest;
 
-public class LinkedListAddFirstTestADD implements CollectionTest {
+public class TreeMapADD implements CollectionTest {
 
 	@Override
 	public long test(Employee[] employees) {
-		LinkedList<Employee> list = new LinkedList<>();
+		TreeMap<Integer, Employee> list = new TreeMap<>();
+
 		long start = getMilliseconds();
-		for(Employee e: employees) {
-			list.addFirst(e);
+
+		for (Employee e : employees) {
+			list.put(e.getId(), e);
 		}
+		
 		long end = getMilliseconds();
 		
 		return end - start;

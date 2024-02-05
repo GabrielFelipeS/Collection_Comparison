@@ -11,6 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.LookAndFeel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.table.DefaultTableModel;
 
 import com.br.collectioncomparison.controller.ComparableController;
@@ -20,6 +24,7 @@ import com.br.collectioncomparison.model.enums.DataFile;
 import com.br.collectioncomparison.patterns.supplier.SupplierDataFiles;
 import com.br.collectioncomparison.patterns.supplier.SupplierTestChoice;
 
+@SuppressWarnings("serial")
 public class ComparableView extends JFrame {
 	private JComboBox<DataFile> fileNames = new JComboBox<>();
 	private JComboBox<TestObject> choiceOfActions = new JComboBox<>();
@@ -34,6 +39,8 @@ public class ComparableView extends JFrame {
 	}
 
 	public ComparableView() {
+		
+		UIManagetSet(new NimbusLookAndFeel());
 		Container container = getContentPane();
 		setLayout(null);
 
@@ -55,7 +62,7 @@ public class ComparableView extends JFrame {
 		container.add(choiceOfActions);
 
 		JButton jbClear = new JButton("Limpar tabela");
-		jbClear.setBounds(400, 20, 250, 20);
+		jbClear.setBounds(400, 0, 250, 30);
 		jbClear.setFont(new Font("Roboto", Font.PLAIN, 15));
 		jbClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jbClear.addMouseListener(new MouseAdapter() {
@@ -79,7 +86,7 @@ public class ComparableView extends JFrame {
 		add(jbClear);
 
 		JButton jbDelete = new JButton("Apagar");
-		jbDelete.setBounds(400, 40, 250, 20);
+		jbDelete.setBounds(400, 30, 250, 30);
 		jbDelete.setFont(new Font("Roboto", Font.PLAIN, 15));
 		jbDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jbDelete.addMouseListener(new MouseAdapter() {
@@ -103,7 +110,7 @@ public class ComparableView extends JFrame {
 		add(jbDelete);
 
 		JButton jbTest = new JButton("Testar");
-		jbTest.setBounds(400, 60, 250, 20);
+		jbTest.setBounds(400, 60, 250, 30);
 		jbTest.setFont(new Font("Roboto", Font.PLAIN, 15));
 		jbTest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jbTest.addMouseListener(new MouseAdapter() {
@@ -129,6 +136,14 @@ public class ComparableView extends JFrame {
 		setSize(800, 500);
 		setVisible(true);
 		setLocationRelativeTo(null);
+	}
+
+	private void UIManagetSet(LookAndFeel lookAndFeel) {
+		try {
+			UIManager.setLookAndFeel(lookAndFeel);
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 	}
 
 	protected void deleteBy() {

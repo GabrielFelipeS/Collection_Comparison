@@ -1,29 +1,25 @@
-package com.br.collectioncomparison.model;
+package com.br.collectioncomparison.model.entities;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.ArrayDeque;
 
 import com.br.collectioncomparison.model.domain.Employee;
 import com.br.collectioncomparison.model.interfaces.CollectionTest;
 
-public class OrderEAdicionarArrayListTestADD implements CollectionTest {
+public class DequeAddTestADD implements CollectionTest {
 
 	@Override
 	public long test(Employee[] employees) {
-		List<Employee> list = new ArrayList<>();
-
+		ArrayDeque<Employee> list = new ArrayDeque<>();
+		
 		long start = getMilliseconds();
 
 		for (Employee e : employees) {
 			list.add(e);
 		}
 		
-		Collections.sort(list);
-
 		long end = getMilliseconds();
-
+		
 		return end - start;
-	}
+}
 
 }
