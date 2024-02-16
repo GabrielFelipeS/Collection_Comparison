@@ -11,11 +11,6 @@ public class TestObject {
         this.collectionTest = collectionTest;
     }
 
-    @Override
-    public String toString() {
-        return title;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -26,5 +21,10 @@ public class TestObject {
 
     public CollectionTest getCollectionTest() {
         return collectionTest;
+    }
+    
+    @Override
+    public String toString() {
+        return title;
     }
 }

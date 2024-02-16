@@ -3,6 +3,7 @@ package com.br.collectioncomparison.model.entities;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -26,13 +27,4 @@ public class ArrayListTestADD implements CollectionTest {
 		return end - start;
 	}
 	
-	public long testar() {
-		Instant start = Instant.now();
-		
-		// Algum codigo
-		
-		Instant end =  Instant.now();
-		return Duration.between(start, end).toNanos();	
-	}
-
 }

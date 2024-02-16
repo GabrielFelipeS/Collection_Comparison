@@ -1,5 +1,6 @@
 package com.br.collectioncomparison.patterns.supplier;
 
+import java.util.Arrays;
 import java.util.function.Supplier;
 
 import com.br.collectioncomparison.model.domain.TestObject;
@@ -19,9 +20,11 @@ import com.br.collectioncomparison.model.entities.PriorityQueueADD;
 import com.br.collectioncomparison.model.entities.QueueADD;
 import com.br.collectioncomparison.model.entities.TreeMapADD;
 import com.br.collectioncomparison.model.entities.TreeSetTestADD;
+import com.br.collectioncomparison.patterns.supplier.testObjects.SupplierOptionsAdd;
+import com.br.collectioncomparison.patterns.supplier.testObjects.SupplierOptionsOrderned;
 
 public class SupplierTestChoice implements Supplier<TestObject[]>  {
-		
+    
     private static final TestObject[] titles = new TestObject[]{
             new TestObject("Adicionar elementos no ArrayList", new ArrayListTestADD()),
             new TestObject("Adicionar elementos no Queue", new QueueADD()),
@@ -40,9 +43,10 @@ public class SupplierTestChoice implements Supplier<TestObject[]>  {
             new TestObject("Adicionar e ordenar elementos no ArrayList", new OrderEAdicionarArrayListTestADD()),
             new TestObject("Ordenar elementos no ArrayList", new OrderArrayListTestADD())
     };
-
+    
     @Override
     public TestObject[] get() {
         return titles;
     }
+
 }

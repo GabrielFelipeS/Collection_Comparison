@@ -39,7 +39,6 @@ public class ComparableView extends JFrame {
 	}
 
 	public ComparableView() {
-		
 		UIManagetSet(new NimbusLookAndFeel());
 		Container container = getContentPane();
 		setLayout(null);
@@ -49,8 +48,7 @@ public class ComparableView extends JFrame {
 		model.addColumn("Tempo de execução (Millisegundos)");
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 100, 760, 350);
-
+		scrollPane.setBounds(10, 100, 961, 350);
 		container.add(scrollPane);
 
 		addFiles(fileNames);
@@ -62,7 +60,7 @@ public class ComparableView extends JFrame {
 		container.add(choiceOfActions);
 
 		JButton jbClear = new JButton("Limpar tabela");
-		jbClear.setBounds(400, 0, 250, 30);
+		jbClear.setBounds(690, 10, 250, 30);
 		jbClear.setFont(new Font("Roboto", Font.PLAIN, 15));
 		jbClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jbClear.addMouseListener(new MouseAdapter() {
@@ -86,7 +84,7 @@ public class ComparableView extends JFrame {
 		add(jbClear);
 
 		JButton jbDelete = new JButton("Apagar");
-		jbDelete.setBounds(400, 30, 250, 30);
+		jbDelete.setBounds(690, 40, 250, 30);
 		jbDelete.setFont(new Font("Roboto", Font.PLAIN, 15));
 		jbDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jbDelete.addMouseListener(new MouseAdapter() {
@@ -110,7 +108,7 @@ public class ComparableView extends JFrame {
 		add(jbDelete);
 
 		JButton jbTest = new JButton("Testar");
-		jbTest.setBounds(400, 60, 250, 30);
+		jbTest.setBounds(400, 10, 250, 30);
 		jbTest.setFont(new Font("Roboto", Font.PLAIN, 15));
 		jbTest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		jbTest.addMouseListener(new MouseAdapter() {
@@ -132,8 +130,36 @@ public class ComparableView extends JFrame {
 		});
 
 		add(jbTest);
+		
+		
+		JButton jbTestAll = new JButton("Testar tudo");
+		jbTestAll.setBounds(400, 40, 250, 30);
+		jbTestAll.setFont(new Font("Roboto", Font.PLAIN, 15));
+		jbTestAll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		jbTestAll.addMouseListener(new MouseAdapter() {
 
-		setSize(800, 500);
+			@Override
+			public void mouseEntered(MouseEvent e) {
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				testAll();
+			}
+
+		
+
+		});
+
+		add(jbTestAll);
+
+
+		setSize(1000, 500);
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
@@ -163,6 +189,11 @@ public class ComparableView extends JFrame {
 		DataFile dataFile = (DataFile) fileNames.getSelectedItem();
 		TestObject testObject = (TestObject) choiceOfActions.getSelectedItem();
 		controller.updateTableByTest(dataFile, testObject);
+	}
+	
+	private void testAll() {
+		DataFile dataFile = (DataFile) fileNames.getSelectedItem();
+		controller.testAll(dataFile ,choiceOfActions);
 	}
 
 	private void addChoideActions(JComboBox<TestObject> choiceOfActions) {

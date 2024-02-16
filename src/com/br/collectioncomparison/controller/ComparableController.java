@@ -1,6 +1,8 @@
 package com.br.collectioncomparison.controller;
 
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import com.br.collectioncomparison.model.domain.DataFile;
 import com.br.collectioncomparison.model.domain.PerformaceResults;
@@ -15,6 +17,15 @@ public class ComparableController {
 		this.controller = controller;
 	}
 
+	public void testAll(DataFile dataFile, JComboBox<TestObject> choiceOfActions) {
+		int size = choiceOfActions.getItemCount();
+		
+		for(int index = 0; index < size; index++) {
+			TestObject test = choiceOfActions.getItemAt(index);
+			updateTableByTest(dataFile, test);
+		}
+	}
+	
 	public void updateTableByTest(DataFile dataFile, TestObject testObject) {
 		PerformaceResults pr = controller.test(dataFile, testObject);
 		updateTable(pr);

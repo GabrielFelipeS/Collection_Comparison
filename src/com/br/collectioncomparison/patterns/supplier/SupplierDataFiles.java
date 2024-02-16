@@ -13,8 +13,7 @@ public class SupplierDataFiles implements Supplier<DataFile[]> {
 			new DataFile("Arquivo com dados de 50.000 funcionarios", "files/MOCK_DATA50000.csv"),	
 			new DataFile("Arquivo com dados de 100.000 funcionarios", "files/MOCK_DATA100000.csv"),	
 			new DataFile("Arquivo com dados de 500.000 funcionarios", "files/MOCK_DATA500000.csv"),	
-			new DataFile("Arquivo com dados de 1.000.000 funcionarios", "files/MOCK_DATA1000000.csv"),	
-			new DataFile("Arquivo com dados de 2.147.483.646 funcionarios", "files/MOCK_DATA2147483646.csv"),		
+			new DataFile("Arquivo com dados de 1.000.000 funcionarios", "files/MOCK_DATA1000000.csv")	
 	};
 
 	@Override
