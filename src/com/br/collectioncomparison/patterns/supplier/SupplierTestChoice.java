@@ -1,6 +1,5 @@
 package com.br.collectioncomparison.patterns.supplier;
 
-import java.util.Arrays;
 import java.util.function.Supplier;
 
 import com.br.collectioncomparison.model.domain.TestObject;
@@ -20,8 +19,6 @@ import com.br.collectioncomparison.model.entities.PriorityQueueADD;
 import com.br.collectioncomparison.model.entities.QueueADD;
 import com.br.collectioncomparison.model.entities.TreeMapADD;
 import com.br.collectioncomparison.model.entities.TreeSetTestADD;
-import com.br.collectioncomparison.patterns.supplier.testObjects.SupplierOptionsAdd;
-import com.br.collectioncomparison.patterns.supplier.testObjects.SupplierOptionsOrderned;
 
 public class SupplierTestChoice implements Supplier<TestObject[]>  {
     

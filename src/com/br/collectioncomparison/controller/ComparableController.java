@@ -1,8 +1,8 @@
 package com.br.collectioncomparison.controller;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 import com.br.collectioncomparison.model.domain.DataFile;
 import com.br.collectioncomparison.model.domain.PerformaceResults;
@@ -17,24 +17,36 @@ public class ComparableController {
 		this.controller = controller;
 	}
 
-	public void testAll(DataFile dataFile, JComboBox<TestObject> choiceOfActions) {
+	public void updateTableByTest(DataFile dataFile, TestObject testObject) {
+		PerformaceResults pr = controller.test(dataFile, testObject);
+		updateTable(pr);
+	}
+	
+	public void useAllTests(DataFile dataFile, JComboBox<TestObject> choiceOfActions) {
 		int size = choiceOfActions.getItemCount();
 		
 		for(int index = 0; index < size; index++) {
 			TestObject test = choiceOfActions.getItemAt(index);
 			updateTableByTest(dataFile, test);
-		}
+		}		
 	}
-	
-	public void updateTableByTest(DataFile dataFile, TestObject testObject) {
-		PerformaceResults pr = controller.test(dataFile, testObject);
-		updateTable(pr);
+
+	public void useAllCombinations(JComboBox<DataFile> fileNames, JComboBox<TestObject> choiceOfActions) {
+		ComboBoxModel<DataFile> model = fileNames.getModel();
+		int size = model.getSize();
+		
+		for(int i = 0;i < size; i++) {
+			DataFile dataFile = model.getElementAt(i);
+			useAllTests(dataFile, choiceOfActions);
+			//if(i == 2) break;
+		}
+		
 	}
 
 	private void updateTable(PerformaceResults pr) {
 		tableContent.addRow(new Object[] { pr.testTitle(), pr.fileName(), pr.runtime()});
 	}
-
+	
 	public void cleanTable() {
 		tableContent.getDataVector().clear();
 		tableContent.fireTableDataChanged();
@@ -45,3 +57,5 @@ public class ComparableController {
 	}
 
 }
+
+

@@ -12,12 +12,12 @@ public class CollectionPerformanceTester {
 
 	public long test(CollectionTest ct, Employee[] employees) {
 		long sum = 0;
-		System.err.println("AQUI: ");
+		//System.err.println("AQUI: ");
 		for (int i = 0; i < numberOfExecutions; i++) {
 			sum += ct.test(employees);
-			System.out.println(sum);
+			//System.out.println(sum);
 		}
-		System.out.println();
+		//System.out.println();
 		return sum / numberOfExecutions;
 	}
 }

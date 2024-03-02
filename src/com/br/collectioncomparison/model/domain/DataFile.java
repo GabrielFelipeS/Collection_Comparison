@@ -17,6 +17,9 @@ public class DataFile {
 		return fileName;
 	}
 	
+	public void setFileName(String text) {
+		this.fileName = fileName;
+	}
 	
 	@Override
 	public String toString() {
