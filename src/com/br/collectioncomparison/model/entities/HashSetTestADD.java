@@ -1,6 +1,5 @@
 package com.br.collectioncomparison.model.entities;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,10 +17,13 @@ public class HashSetTestADD implements CollectionTest {
 		for (Employee e : employees) {
 			list.add(e);
 		}
-		
+
 		long end = getMilliseconds();
 
 		return end - start;
 	}
-
+	@Override
+	public String toString() {
+		return "Adicionar elementos no HashSet";
+	}
 }

@@ -16,11 +16,13 @@ public class LinkedHashMapADD implements CollectionTest {
 		for (Employee e : employees) {
 			list.put(e.getId(), e);
 		}
-		
+
 		long end = getMilliseconds();
-		
+
 		return end - start;
 
 	}
-
+	public String toString() {
+		return "Adicionar elementos no LinkedHashMap";
+	}
 }

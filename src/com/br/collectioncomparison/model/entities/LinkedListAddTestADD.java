@@ -16,8 +16,11 @@ public class LinkedListAddTestADD implements CollectionTest {
 			list.add(e);
 		}
 		long end = getMilliseconds();
-		
+
 		return end - start;
 	}
-
+	@Override
+	public String toString() {
+		return "Adicionar elementos no LinkedList usando add";
+	}
 }

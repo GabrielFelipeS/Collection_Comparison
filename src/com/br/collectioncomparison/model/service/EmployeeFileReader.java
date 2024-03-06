@@ -11,24 +11,24 @@ import com.br.collectioncomparison.model.domain.Employee;
 import com.br.collectioncomparison.patterns.factory.FactoryEmployee;
 
 public class EmployeeFileReader {
-	
+
 	public static Employee[] read(String fileName) {
 		List<Employee> list = new ArrayList<>();
-		
-		File file = new File(fileName); 
+
+		File file = new File(fileName);
 		try (FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr); ) {
 			br.readLine();
 			String line;
 			while((line = br.readLine()) != null) {
 				Employee employee = FactoryEmployee.createByLine(line);
-				list.add(employee);	
+				list.add(employee);
 			}
-			
+
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage());
 		}
-		
+
 		return list.toArray(new Employee[0]);
 	}
 }

@@ -6,14 +6,18 @@ import java.util.Date;
 import com.br.collectioncomparison.model.domain.Employee;
 
 public interface CollectionTest {
+	
+
 	default long getMilliseconds() {
 		long milliseconds = new Date().getTime();
 		return milliseconds;
 	}
-	
+
 	default Instant getInstant() {
 		return Instant.now();
 	}
-	
+
 	long test(Employee[] employees);
+
+	public String toString();
 }

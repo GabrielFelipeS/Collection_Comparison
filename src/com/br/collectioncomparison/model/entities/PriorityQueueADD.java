@@ -9,17 +9,21 @@ public class PriorityQueueADD implements CollectionTest {
 
 	@Override
 	public long test(Employee[] employees) {
-		PriorityQueue<Employee> list = new PriorityQueue<Employee>();
-		
+		PriorityQueue<Employee> list = new PriorityQueue<>();
+
 		long start = getMilliseconds();
 
 		for (Employee e : employees) {
 			list.add(e);
 		}
-		
+
 		long end = getMilliseconds();
-		
+
 		return end - start;
 	}
 
+	@Override
+	public String toString() {
+		return "Adicionar elementos no PriorityQueue";
+	}
 }

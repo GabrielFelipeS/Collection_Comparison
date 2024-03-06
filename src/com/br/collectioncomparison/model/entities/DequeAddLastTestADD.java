@@ -22,5 +22,10 @@ public class DequeAddLastTestADD implements CollectionTest {
 		return end - start;
 
 	}
+	
+	@Override
+	public String toString() {
+		return "Adicionar elementos no Deque  usando addLast";
+	}
 
 }

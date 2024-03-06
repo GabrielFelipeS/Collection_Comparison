@@ -1,7 +1,6 @@
 package com.br.collectioncomparison.model.entities;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,5 +26,8 @@ public class OrderArrayListTestADD implements CollectionTest {
 
 		return end - start;
 	}
-
+	@Override
+	public String toString() {
+		return "Ordenar elementos no ArrayList";
+	}
 }

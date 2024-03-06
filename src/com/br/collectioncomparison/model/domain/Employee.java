@@ -2,10 +2,12 @@ package com.br.collectioncomparison.model.domain;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Employee implements Comparable<Employee> {
-	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	//private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	private Integer id;
 	private String name;
 	private Date dateOfBonth;
@@ -25,11 +27,39 @@ public class Employee implements Comparable<Employee> {
 	public Integer getId() {
 		return id;
 	}
-	
+
+//	@Override
+//	public String toString() {
+//		return String.format("%d;%s;%s;%s;%s;%.2f", id, name, sdf.format(dateOfBonth), company, departament, salary);
+//	}
+
+
+	public String getName() {
+		return name;
+	}
+
+	public Date getDateOfBonth() {
+		return dateOfBonth;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public String getDepartament() {
+		return departament;
+	}
+
+	public Double getSalary() {
+		return salary;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("%d;%s;%s;%s;%s;%.2f", id, name, sdf.format(dateOfBonth), company, departament, salary);
+		Locale.setDefault(Locale.US);
+		return String.format("(%d, '%s','%s','%s','%s',%.2f)", id, name, sdf.format(dateOfBonth), company, departament, salary);
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -40,9 +70,7 @@ public class Employee implements Comparable<Employee> {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if ((obj == null) || (getClass() != obj.getClass()))
 			return false;
 		Employee other = (Employee) obj;
 		return Objects.equals(id, other.id);

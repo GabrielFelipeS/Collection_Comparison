@@ -16,10 +16,13 @@ public class HashMapADD implements CollectionTest {
 		for (Employee e : employees) {
 			list.put(e.getId(), e);
 		}
-		
+
 		long end = getMilliseconds();
-		
+
 		return end - start;
 	}
-
+	@Override
+	public String toString() {
+		return "Adicionar elementos no HashMap";
+	}
 }

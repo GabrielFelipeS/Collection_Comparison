@@ -11,18 +11,21 @@ public class TreeSetTestADD implements CollectionTest {
 	@Override
 	public long test(Employee[] employees) {
 		Set<Employee> list = new TreeSet<>();
-		
+
 		long start = getMilliseconds();
 		//System.out.println(start);
-		
+
 		for (Employee e : employees) {
 			list.add(e);
 		}
-		
+
 		long end = getMilliseconds();
 		//System.out.println(end);
-		
+
 		return end - start;
 	}
-
+	@Override
+	public String toString() {
+		return "Adicionar elementos no TreeSet";
+	}
 }

@@ -13,12 +13,11 @@ import com.br.collectioncomparison.model.service.EmployeeFileReader;
 public class PerformanceTesterController {
 	private CollectionPerformanceTester collectionPerformanceTester = new CollectionPerformanceTester(10);
 
-	public PerformaceResults test(DataFile dataFile, TestObject testObject) {
+	public PerformaceResults test(DataFile dataFile, CollectionTest testObject) {
 		Employee[] employees = readFile(dataFile.getFileName());
-		CollectionTest test = testObject.getCollectionTest();
-		Long runtime = collectionPerformanceTester.test(test, employees);
+		Long runtime = collectionPerformanceTester.test(testObject, employees);
 
-		return new PerformaceResults(testObject.getTitle(), dataFile.getTitle(), runtime, LocalDateTime.now());
+		return new PerformaceResults(testObject.toString(), dataFile.getTitle(), runtime, LocalDateTime.now());
 	}
 
 	private Employee[] readFile(String nameFile) {

@@ -14,36 +14,29 @@ import com.br.collectioncomparison.model.entities.LinkedListAddFirstTestADD;
 import com.br.collectioncomparison.model.entities.LinkedListAddLastTestADD;
 import com.br.collectioncomparison.model.entities.LinkedListAddTestADD;
 import com.br.collectioncomparison.model.entities.OrderArrayListTestADD;
-import com.br.collectioncomparison.model.entities.OrderEAdicionarArrayListTestADD;
+import com.br.collectioncomparison.model.entities.AdicionarEOrdenarArrayListTestADD;
 import com.br.collectioncomparison.model.entities.PriorityQueueADD;
 import com.br.collectioncomparison.model.entities.QueueADD;
 import com.br.collectioncomparison.model.entities.TreeMapADD;
 import com.br.collectioncomparison.model.entities.TreeSetTestADD;
+import com.br.collectioncomparison.model.interfaces.CollectionTest;
+import com.br.collectioncomparison.util.FindClassesByInterface;
 
-public class SupplierTestChoice implements Supplier<TestObject[]>  {
-    
-    private static final TestObject[] titles = new TestObject[]{
-            new TestObject("Adicionar elementos no ArrayList", new ArrayListTestADD()),
-            new TestObject("Adicionar elementos no Queue", new QueueADD()),
-            new TestObject("Adicionar elementos no PriorityQueue", new PriorityQueueADD()),
-            new TestObject("Adicionar elementos no Deque usando add", new DequeAddTestADD()),
-            new TestObject("Adicionar elementos no Deque usando addFirst", new DequeAddFirstTestADD()),
-            new TestObject("Adicionar elementos no Deque  usando addLast", new DequeAddLastTestADD()),
-            new TestObject("Adicionar elementos no HashMap", new HashMapADD()),
-            new TestObject("Adicionar elementos no LinkedHashMap", new LinkedHashMapADD()),
-            new TestObject("Adicionar elementos no TreeMap", new TreeMapADD()),
-            new TestObject("Adicionar elementos no HashSet", new HashSetTestADD()),
-            new TestObject("Adicionar elementos no TreeSet", new TreeSetTestADD()),
-            new TestObject("Adicionar elementos no LinkedList usando add", new LinkedListAddTestADD()),
-            new TestObject("Adicionar elementos no LinkedList usando addFirst", new LinkedListAddFirstTestADD()),
-            new TestObject("Adicionar elementos no LinkedList usando addLast", new LinkedListAddLastTestADD()),
-            new TestObject("Adicionar e ordenar elementos no ArrayList", new OrderEAdicionarArrayListTestADD()),
-            new TestObject("Ordenar elementos no ArrayList", new OrderArrayListTestADD())
-    };
-    
-    @Override
-    public TestObject[] get() {
-        return titles;
-    }
+public class SupplierCollectionTest implements Supplier<CollectionTest[]>  {
+	   private static final CollectionTest[] titles;
+	    
+	    static {
+	    	FindClassesByInterface<CollectionTest> clazz = 
+	    			new FindClassesByInterface<CollectionTest>("com.br.collectioncomparison.model.entities", CollectionTest.class);
+	    	titles = clazz.find().toArray(new CollectionTest[0]);
+	    }
+	    
+
+
+	    @Override
+	    public CollectionTest[] get() {
+	        return titles;
+	    }
+
 
 }

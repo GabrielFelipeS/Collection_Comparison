@@ -22,7 +22,7 @@ public class TestObject {
     public CollectionTest getCollectionTest() {
         return collectionTest;
     }
-    
+
     @Override
     public String toString() {
         return title;

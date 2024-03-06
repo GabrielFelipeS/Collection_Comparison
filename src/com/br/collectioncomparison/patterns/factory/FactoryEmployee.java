@@ -12,8 +12,8 @@ public class FactoryEmployee {
 	public static Employee createByLine(String line) {
 		try {
 			String[] params = line.split(";");
-			
-			Integer id = Integer.parseInt(params[0]);		
+
+			Integer id = Integer.parseInt(params[0]);
 			String name = params[1];
 			Date data = sdf.parse(params[2]);
 			String company = params[3];
@@ -22,10 +22,10 @@ public class FactoryEmployee {
 
 			Employee employee = new Employee(id, name, data, company, departament, salary);
 			return employee;
-			
+
 		} catch (ParseException e) {
 			throw new RuntimeException(e.getMessage());
 		}
-		
+
 	}
 }

@@ -30,18 +30,19 @@ import com.br.collectioncomparison.controller.ComparableController;
 import com.br.collectioncomparison.controller.PerformanceTesterController;
 import com.br.collectioncomparison.model.domain.DataFile;
 import com.br.collectioncomparison.model.domain.TestObject;
+import com.br.collectioncomparison.model.interfaces.CollectionTest;
 import com.br.collectioncomparison.patterns.supplier.SupplierDataFiles;
-import com.br.collectioncomparison.patterns.supplier.SupplierTestChoice;
+import com.br.collectioncomparison.patterns.supplier.SupplierCollectionTest;
 
 @SuppressWarnings("serial")
 public class ComparableView extends JFrame {
 	private JComboBox<DataFile> fileNames = new JComboBox<>();
-	private JComboBox<TestObject> choiceOfActions = new JComboBox<>();
+	private JComboBox<CollectionTest> choiceOfActions = new JComboBox<>();
 	private JTable table = new JTable();
 	private DefaultTableModel model = (DefaultTableModel) table.getModel();
 	private JProgressBar progressBar;
 	private JTextField tf;
-	 
+
 	private ComparableController controller = new ComparableController(model, new PerformanceTesterController());
 
 	public static void main(String[] args) {
@@ -54,57 +55,54 @@ public class ComparableView extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		Container container = getContentPane();
 		setLayout(null);
-		
+
 		tf = new JTextField(10);
-		
+
 		tf.addFocusListener(new FocusListener() {
-			
+
 			@Override
 			public void focusLost(FocusEvent e) {
 				if(tf.getText().isBlank()) {
 					tf.setText("Insira a quantidade de dados que gostaria de testar");
 					tf.setForeground(Color.GRAY);
 				} else if(!tf.getText().matches("^[0-9]+$")){
-					System.out.println("REGEX");
 					String replace = tf.getText().replaceAll("[^0-9]", "");
 					tf.setText(replace);
 				}
 			}
-			
+
 			@Override
 			public void focusGained(FocusEvent e) {
 				if(tf.getText().equals("Insira a quantidade de dados que gostaria de testar")) {
 					tf.setText("");
 					tf.setForeground(Color.BLACK);
-					
+
 				}
 			}
 		});
-		
-		
+
+
 		tf.setBounds(20, 40, 300, 27);
-		
+
 		fileNames.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				DataFile data = (DataFile) fileNames.getSelectedItem();
 				if(data.getTitle().equals("Personalizado")) {
 					add(tf);
 					tf.setVisible(true);
 					tf.setText("Insira a quantidade de dados que gostaria de testar");
 					tf.setForeground(Color.GRAY);
-					
+
 					choiceOfActions.setBounds(20, 70, 300, 20);
-					System.out.println("Adicionado");
-				
+
 				} else {
 					tf.setText("");
-					tf.setVisible(false);					
+					tf.setVisible(false);
 					choiceOfActions.setBounds(20, 60, 300, 20);
-					remove(tf);				
-					System.out.println("Removido");
+					remove(tf);
 				}
 			}
 		});
@@ -113,7 +111,7 @@ public class ComparableView extends JFrame {
 		model.addColumn("Arquivo de dados");
 		model.addColumn("Tempo de execução (Millisegundos)");
 		model.addTableModelListener(table);
-		
+
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 100, 961, 350);
 		container.add(scrollPane);
@@ -259,18 +257,18 @@ public class ComparableView extends JFrame {
 				useAllCombinations();
 			}
 
-		});		
+		});
 		add(jbTestAll);
-		
+
 		progressBar = new JProgressBar();
 		progressBar.setBounds(10, 460, 961, 25);
-		
+
 		add(progressBar);
-		
+
 		setSize(1000, 530);
 		setVisible(true);
 		setLocationRelativeTo(null);
-		
+
 	}
 
 	private void UIManagetSet(LookAndFeel lookAndFeel) {
@@ -294,30 +292,30 @@ public class ComparableView extends JFrame {
 		controller.cleanTable();
 	}
 
-	
+
 	private boolean isSizeNotPersonalized() {
 		return !tf.isVisible();
 	}
 
-	
+
 	private void test() {
 		if(isSizeNotPersonalized() || insertSize()) {
 			DataFile dataFile = (DataFile) fileNames.getSelectedItem();
-			TestObject testObject = (TestObject) choiceOfActions.getSelectedItem();
+			CollectionTest testObject =  (CollectionTest) choiceOfActions.getSelectedItem();
 			controller.updateTableByTest(dataFile, testObject);
 		} else {
 			JOptionPane.showConfirmDialog(null,
 					"Por favor insira um tamanho padrão ou um tamanho valido", "Aviso", JOptionPane.YES_NO_OPTION);
 		}
 	}
-	
+
 	private boolean insertSize() {
 		String text = tf.getText();
 		if(text.replaceAll("[^0-9]", "").isBlank()) return false;
-		
+
 		DataFile dataFile = (DataFile) fileNames.getSelectedItem();
 		dataFile.setFileName(text);
-		
+
 		return true;
 	}
 
@@ -331,23 +329,23 @@ public class ComparableView extends JFrame {
 		if(messageYesNoOption("Essa opção leva alguns minutos\nGostaria de continuar?") == JOptionPane.YES_OPTION &&
 			messageYesNoOption("Você tem certeza que quer continuar?") == JOptionPane.YES_OPTION
 			) {
-				
-			controller.useAllCombinations(fileNames, choiceOfActions);			
-				
+
+			controller.useAllCombinations(fileNames, choiceOfActions);
+
 		}
 	}
 
 	private int messageYesNoOption(String message) {
 		return messageYesNoOption(message, "Aviso");
 	}
-	
+
 	private int messageYesNoOption(String message, String title) {
 		return  JOptionPane.showConfirmDialog(null,
 				message, title, JOptionPane.YES_NO_OPTION);
 	}
 
-	private void addChoideActions(JComboBox<TestObject> choiceOfActions) {
-		for (TestObject testObject : new SupplierTestChoice().get()) {
+	private void addChoideActions(JComboBox<CollectionTest> choiceOfActions) {
+		for (CollectionTest testObject : new SupplierCollectionTest().get()) {
 			choiceOfActions.addItem(testObject);
 		}
 	}
